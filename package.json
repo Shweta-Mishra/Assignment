@@ -1,0 +1,19 @@
+{
+  "name": "give-india-app",
+  "version": "1.0.0",
+  "description": "Assignment for GiveIndia Org",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shweta-mishra/give-india-app.git"
+  },
+  "author": "Shweta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shweta-mishra/give-india-app/issues"
+  },
+  "homepage": "https://github.com/shweta-mishra/give-india-app#readme"
+}

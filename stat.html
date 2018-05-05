@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css" rel="Stylesheet"></link>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
+<script type="text/javascript">
+	var socket = io('http://localhost:3000');
+    socket.on('totalrequest', function (data) {
+		console.log("reload");
+		$('#TotalRequest').html(JSON.stringify(data));
+    });
+	socket.on('active', function (data) {
+		
+		$('#ActiveRequest').html(data);
+    });
+	socket.on('min', function (data) {
+		
+		$('#MinRequest').html(data);
+    });
+		
+	$(document).ready(function() {
+		
+		$.ajax({
+			type:'get',
+			url:'http://localhost:3000/stats',
+			timeout: 10000,
+			async:false,
+			success:function(value){
+				console.log(value);
+					console.log(value.totalRequest);
+						$('#TotalRequest').html(value.totalRequest);
+						$('#ActiveRequest').html(value.activeRequest);
+						$('#MinRequest').html(value.minuteRequest);
+						$("#alldata").append(value);
+			},error:function(xhr,ajaxOptions,thrownError){
+				alert("Check Your Internet Connection and Try Again");
+			}
+		});
+		
+	});		
+	</script>
+  </head>
+  
+  <body>
+   <!-- <div class="container">
+		<div class="header">
+		</div>
+		<div class="main_content" id="main_content">
+			<div class="content_head">stat</div>
+			<div class="search_engg">
+				<div id="TotalRequest"></div>
+				<div id="ActiveRequest"></div>
+				<div id="MinRequest"></div>
+				<div id="alldata"></div>
+			</div>
+		</div>
+		
+		
+	</div> -->
+	
+	
+	<div id="TotalRequest">00</div>
+				<div id="ActiveRequest">00</div>
+				<div id="MinRequest">00</div>
+				<div id="alldata">00</div>
+  </body>
+
+</html>
